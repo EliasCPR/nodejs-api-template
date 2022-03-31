@@ -1,0 +1,43 @@
+version: '2'
+
+services:
+# ===================================================================
+  nodejs-api-template:
+    container_name: nodejs-api-template
+    hostname: nodejs-api-template
+    image: nodejs-api-template:dev
+
+    build:
+      context: .
+      dockerfile: .docker/development.dockerfile
+    volumes:
+      - .:/opt/app
+      - /opt/app/node_modules
+      - ./config:/config
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    working_dir: /opt/app
+    environment:
+      NODE_ENV: development
+      MONGO_URI: mongodb://nodejs-api-template-mongodb:27017/test
+    networks:
+      - nodejs-api-template-private-network
+    entrypoint: yarn serve
+
+  nodejs-api-template-mongodb:
+    container_name: nodejs-api-template-mongodb
+    hostname: nodejs-api-template-mongodb
+    image: mongo:5.0.3-focal
+
+    ports:
+      - 27017:27017
+    networks:
+      - nodejs-api-template-private-network
+    logging:
+      driver: none
+
+# ===================================================================
+networks:
+  nodejs-api-template-private-network:
+    driver: bridge

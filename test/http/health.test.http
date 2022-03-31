@@ -1,0 +1,5 @@
+HEAD http://localhost:3000/health/live
+
+###
+
+HEAD http://localhost:3000/health/ready

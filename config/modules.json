@@ -1,0 +1,30 @@
+[
+  {
+    "name": "logger",
+    "file": "logger",
+    "depends": [],
+    "order": 1
+  },
+  {
+    "name": "mongoose",
+    "file": "mongoose",
+    "depends": ["logger"],
+    "order": 2
+  },
+  {
+    "name": "feature-api",
+    "file": "feature-api",
+    "depends": ["logger", "mongoose"],
+    "order": 3
+  },
+  {
+    "name": "health-api",
+    "file": "health-api",
+    "depends": ["logger"]
+  },
+  {
+    "name": "seeds",
+    "file": "seeds",
+    "depends": []
+  }
+]

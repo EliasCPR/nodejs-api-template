@@ -1,0 +1,98 @@
+{
+  "name": "portal-bff-api",
+  "version": "1.0.0",
+  "description": "Open Banking - Modulo de Ressarcimento - portal-bff-api",
+  "main": "index.js",
+  "author": "Rafael Trestini",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">12"
+  },
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "blob": "^0.1.0",
+    "bunyan": "^1.8.15",
+    "date-fns": "^2.25.0",
+    "exceljs": "^4.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.0",
+    "koa-body": "^4.2.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-favicon": "^2.1.0",
+    "koa-json": "^2.0.2",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^10.0.0",
+    "mongoose": "^6.0.10",
+    "ramda": "^0.27.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/bunyan": "^1.8.7",
+    "@types/jest": "^27.0.2",
+    "@types/jsonwebtoken": "^8.5.5",
+    "@types/koa": "^2.11.6",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-json": "^2.0.18",
+    "@types/koa-logger": "^3.1.1",
+    "@types/koa-router": "^7.4.1",
+    "@types/node": "^14.14.14",
+    "@types/ramda": "^0.27.46",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "concurrently": "^5.3.0",
+    "eslint": "^8.1.0",
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.6",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.1.3"
+  },
+  "scripts": {
+    "build": "yarn eslint src --ext .ts && tsc",
+    "start": "node dist/index.js",
+    "serve": "concurrently \"tsc -w --preserveWatchOutput\" \"nodemon --ignore config/config.json dist/index.js\"",
+    "test": "jest --verbose --detectOpenHandles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.adviseu.com.br:open-banking/portal-bff-api.git"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "ts",
+      "tsx"
+    ],
+    "transform": {
+      "\\.ts$": "ts-jest"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "coverageReporters": [
+      "text",
+      "text-summary"
+    ],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(js|ts)x?$",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/dist/",
+      "/coverage/",
+      "/config/",
+      "/migrations/"
+    ]
+  },
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+    "**/*.{ts,js}",
+    "!**/node_modules/**",
+    "!**/dist/**",
+    "!**/coverage/**"
+  ]
+}

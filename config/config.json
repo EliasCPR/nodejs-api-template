@@ -1,0 +1,6 @@
+{
+  "featureApi": {
+    "baseUri": "/nodejs-api-template",
+    "autoDiscoveryFeatures": true
+  }
+}
